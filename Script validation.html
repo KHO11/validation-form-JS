@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<title>
+    Validation Checks
+</title>
+<style>
+
+    p {
+        color: red;
+        margin-left: 500px;
+    }
+
+    header {
+        padding: 60px;
+        text-align: center;
+        color: black;
+        font-size: 30px;
+        font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        
+    }
+
+    input[type=text], select {
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        margin-left: 560px;
+    }
+
+    label {
+        margin-left: 560px;
+        font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+    }
+
+
+    button {
+        background-color: blue;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-left: 610px;
+    }
+</style>
+
+<body>
+    <header>
+        Validation Checks
+    </header>
+
+    <form action="">
+        <label for="fname">Enter Password</label>
+        <br>
+        <input type ="text" id="textbox" placeholder="Password">
+        
+        <br><br>
+
+        <button type="button" value="Submit" id="submit" onclick="validationForm()">Submit</button>
+
+    </form>
+
+    <p id="answerBox">
+
+    </p>
+
+    <br>
+    <p id="answerBox2">
+
+    </p>
+
+    <script>
+
+        function validationForm() {
+            var format = new RegExp("<>@!#$%^&*()_+[]{}?:;|'\"\\,./~`-=");
+            var answer = document.getElementById("textbox").value;
+            var letters = /[^A-Z]/g;
+
+            if (format.test(answer) === false) {
+                document.getElementById("answerBox").innerHTML="Needs to contain special characters";
+            }
+
+            else if (answer.charAt(0).match(letters)) {
+                document.getElementById("answerBox2").innerHTML="First character is not upper case";
+            }
+
+            else if (answer.charAt(0).match(letters) && format.test(answer) === false) {
+                document.getElementById("answerBox").innerHTML="Needs to contain special characters";
+                document.getElementById("answerBox2").innerHTML="First character is not upper case";
+            }
+            
+
+            
+        }
+
+
+    </script>
+    
+</body>
+</html>
